@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problem Statement | Interactive Explanation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6c63ff;
+            --secondary: #4a44c9;
+            --accent: #ff6584;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            overflow-x: hidden;
+            background-color: #f9f9f9;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            padding: 0.5rem 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0;
+            transition: var(--transition);
+        }
+
+        header.scrolled nav {
+            padding: 0.5rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 0 5rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            line-height: 1.2;
+        }
+
+        .typed-text {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--gray);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: var(--transition);
+            border: 2px solid var(--primary);
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.2);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            margin-left: 1rem;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .hero-shape {
+            position: absolute;
+            right: -100px;
+            bottom: -100px;
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            opacity: 0.2;
+            z-index: 1;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero-shape-2 {
+            position: absolute;
+            left: -50px;
+            top: -50px;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(45deg, var(--accent), #ff8da1);
+            border-radius: 50%;
+            opacity: 0.15;
+            z-index: 1;
+            animation: float 6s ease-in-out infinite reverse;
+        }
+
+        /* Section Common Styles */
+        section {
+            padding: 6rem 0;
+            scroll-margin-top: 80px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background-color: var(--primary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Problem Section */
+        .problem-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .problem-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            transform: translateY(50px);
+            opacity: 0;
+        }
+
+        .problem-card.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+
+        .card-header {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .card-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .card-body ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .card-body ul li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .card-body ul li:before {
+            content: '→';
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+        }
+
+        /* Solution Section */
+        .solution {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .solution-steps {
+            counter-reset: step-counter;
+        }
+
+        .step {
+            display: flex;
+            margin-bottom: 3rem;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transform: translateX(-50px);
+            opacity: 0;
+            transition: transform 0.6s ease, opacity 0.6s ease;
+        }
+
+        .step.visible {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .step-icon {
+            flex: 0 0 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            color: white;
+            font-size: 2rem;
+            position: relative;
+        }
+
+        .step-icon:before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(255, 101, 132, 0.3);
+        }
+
+        .step-content {
+            padding: 2rem;
+            flex: 1;
+        }
+
+        /* Visualization Section */
+        .visualization {
+            text-align: center;
+        }
+
+        .graph-container {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin-bottom: 3rem;
+            transform: scale(0.9);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .graph-container.visible {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .graph {
+            height: 300px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 30px;
+            padding: 0 2rem;
+            margin-top: 2rem;
+        }
+
+        .bar {
+            width: 60px;
+            background: linear-gradient(to top, var(--primary), var(--secondary));
+            border-radius: 5px 5px 0 0;
+            position: relative;
+            transition: var(--transition);
+            transform-origin: bottom;
+            height: 0;
+        }
+
+        .bar:hover {
+            transform: scaleY(1.05);
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.4);
+        }
+
+        .bar-label {
+            position: absolute;
+            bottom: -30px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .bar-value {
+            position: absolute;
+            top: -30px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        /* Interactive Demo */
+        .interactive-demo {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin-top: 3rem;
+        }
+
+        .demo-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .slider-container {
+            flex: 1;
+            min-width: 250px;
+            max-width: 400px;
+        }
+
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .slider {
+            width: 100%;
+            height: 10px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: #ddd;
+            outline: none;
+            border-radius: 5px;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+
+        /* Conclusion Section */
+        .conclusion {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .conclusion .section-title h2 {
+            color: white;
+        }
+
+        .conclusion .section-title h2:after {
+            background-color: white;
+        }
+
+        .conclusion .section-title p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .conclusion-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .highlight {
+            color: #ffd166;
+            font-weight: 600;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary);
+            bottom: 0;
+            left: 0;
+            border-radius: 3px;
+        }
+
+        .footer-column p {
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            transition: var(--transition);
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--secondary);
+            transform: translateY(-5px);
+        }
+
+        /* Animation Keyframes */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes growBar {
+            from { height: 0; }
+            to { height: var(--target-height); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .step {
+                flex-direction: column;
+            }
+            
+            .step-icon {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: var(--transition);
+                gap: 2rem;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.9rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .graph {
+                gap: 15px;
+            }
+            
+            .bar {
+                width: 40px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                text-align: center;
+                padding: 7rem 0 3rem;
+            }
+            
+            .hero-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+            }
+            
+            .problem-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .graph {
+                gap: 10px;
+                padding: 0 1rem;
+            }
+            
+            .bar {
+                width: 30px;
+            }
+            
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <i class="fas fa-code"></i>
+                    ProblemSolver
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#problem">Problem</a></li>
+                    <li><a href="#solution">Solution</a></li>
+                    <li><a href="#visualization">Visualization</a></li>
+                    <li><a href="#conclusion">Conclusion</a></li>
+                </ul>
+                <button class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Solving Complex Problems with <span class="typed-text" id="typed"></span></h1>
+                <p>An interactive explanation of our approach to solving challenging computational problems with innovative algorithms and efficient data structures.</p>
+                <div class="hero-buttons">
+                    <a href="#problem" class="btn">Explore Problem</a>
+                    <a href="#solution" class="btn btn-outline">View Solution</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-shape"></div>
+        <div class="hero-shape-2"></div>
+    </section>
+
+    <!-- Problem Statement Section -->
+    <section id="problem" class="problem">
+        <div class="container">
+            <div class="section-title">
+                <h2>Problem Statement</h2>
+                <p>Understanding the core challenges we need to address</p>
+            </div>
+            <div class="problem-cards">
+                <div class="problem-card">
+                    <div class="card-header">
+                        <h3>Problem Overview</h3>
+                        <p>Main challenges</p>
+                    </div>
+                    <div class="card-body">
+                        <p>Design an efficient algorithm to optimize resource allocation in distributed systems with constraints on latency and throughput.</p>
+                        <ul>
+                            <li>Minimize response time</li>
+                            <li>Maximize resource utilization</li>
+                            <li>Handle dynamic workload changes</li>
+                            <li>Ensure fault tolerance</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="problem-card">
+                    <div class="card-header">
+                        <h3>Constraints</h3>
+                        <p>Limitations & boundaries</p>
+                    </div>
+                    <div class="card-body">
+                        <p>The solution must operate within the following constraints:</p>
+                        <ul>
+                            <li>Limited computational resources</li>
+                            <li>Real-time processing requirements</li>
+                            <li>Network bandwidth limitations</li>
+                            <li>Security and privacy considerations</li>
+                            <li>Scalability to handle increasing loads</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="problem-card">
+                    <div class="card-header">
+                        <h3>Expected Outcomes</h3>
+                        <p>Success metrics</p>
+                    </div>
+                    <div class="card-body">
+                        <p>The solution should demonstrate measurable improvements in:</p>
+                        <ul>
+                            <li>30% reduction in latency</li>
+                            <li>25% improvement in throughput</li>
+                            <li>15% better resource utilization</li>
+                            <li>99.9% system availability</li>
+                            <li>Linear scaling with added resources</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution" class="solution">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Solution</h2>
+                <p>Innovative approach to solving the problem</p>
+            </div>
+            <div class="solution-steps">
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3>Problem Analysis</h3>
+                        <p>We conducted a thorough analysis of the problem space, identifying key bottlenecks and performance constraints. Our team examined existing solutions and their limitations to inform our approach.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3>Algorithm Design</h3>
+                        <p>We developed a novel hybrid algorithm that combines machine learning prediction with heuristic optimization techniques. This approach allows for adaptive resource allocation based on predicted workload patterns.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3>Implementation</h3>
+                        <p>We implemented the solution using a microservices architecture with containerization for scalability and ease of deployment. The system is built with fault tolerance and self-healing capabilities.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="step-content">
+                        <h3>Optimization</h3>
+                        <p>Through iterative testing and profiling, we optimized the algorithm parameters and system configuration to achieve the best performance across various workload scenarios.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visualization Section -->
+    <section id="visualization" class="visualization">
+        <div class="container">
+            <div class="section-title">
+                <h2>Performance Visualization</h2>
+                <p>Comparative analysis of our solution against existing approaches</p>
+            </div>
+            <div class="graph-container">
+                <h3>Latency Comparison (Lower is Better)</h3>
+                <div class="graph">
+                    <div class="bar" style="--target-height: 80%;" data-value="120ms">
+                        <span class="bar-value">120ms</span>
+                        <span class="bar-label">Existing A</span>
+                    </div>
+                    <div class="bar" style="--target-height: 70%;" data-value="105ms">
+                        <span class="bar-value">105ms</span>
+                        <span class="bar-label">Existing B</span>
+                    </div>
+                    <div class="bar" style="--target-height: 45%;" data-value="68ms">
+                        <span class="bar-value">68ms</span>
+                        <span class="bar-label">Our Solution</span>
+                    </div>
+                </div>
+            </div>
+            <div class="graph-container">
+                <h3>Throughput Comparison (Higher is Better)</h3>
+                <div class="graph">
+                    <div class="bar" style="--target-height: 60%;" data-value="1.2K">
+                        <span class="bar-value">1.2K</span>
+                        <span class="bar-label">Existing A</span>
+                    </div>
+                    <div class="bar" style="--target-height: 65%;" data-value="1.3K">
+                        <span class="bar-value">1.3K</span>
+                        <span class="bar-label">Existing B</span>
+                    </div>
+                    <div class="bar" style="--target-height: 95%;" data-value="1.9K">
+                        <span class="bar-value">1.9K</span>
+                        <span class="bar-label">Our Solution</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Demo -->
+            <div class="interactive-demo">
+                <h3>Interactive Performance Simulator</h3>
+                <p>Adjust the parameters to see how our solution performs under different conditions</p>
+                
+                <div class="demo-controls">
+                    <div class="slider-container">
+                        <div class="slider-label">
+                            <span>Workload Intensity</span>
+                            <span id="workload-value">Medium</span>
+                        </div>
+                        <input type="range" min="1" max="3" value="2" class="slider" id="workload-slider">
+                    </div>
+                    
+                    <div class="slider-container">
+                        <div class="slider-label">
+                            <span>System Resources</span>
+                            <span id="resources-value">Medium</span>
+                        </div>
+                        <input type="range" min="1" max="3" value="2" class="slider" id="resources-slider">
+                    </div>
+                </div>
+                
+                <div class="graph">
+                    <div class="bar" style="--target-height: 60%;" data-value="1.2K">
+                        <span class="bar-value">1.2K</span>
+                        <span class="bar-label">Existing A</span>
+                    </div>
+                    <div class="bar" style="--target-height: 65%;" data-value="1.3K">
+                        <span class="bar-value">1.3K</span>
+                        <span class="bar-label">Existing B</span>
+                    </div>
+                    <div class="bar" style="--target-height: 95%;" data-value="1.9K">
+                        <span class="bar-value">1.9K</span>
+                        <span class="bar-label">Our Solution</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conclusion Section -->
+    <section id="conclusion" class="conclusion">
+        <div class="container">
+            <div class="section-title">
+                <h2>Conclusion</h2>
+                <p>Summary of our achievements and future directions</p>
+            </div>
+            <div class="conclusion-content">
+                <p>Our solution successfully addresses the problem of resource allocation in distributed systems, demonstrating significant improvements in both latency and throughput compared to existing approaches.</p>
+                <p>The algorithm's adaptive nature allows it to handle dynamic workloads effectively while maintaining high resource utilization and system stability.</p>
+                <p>Future work will focus on enhancing the predictive capabilities of our machine learning model and expanding the solution to support multi-cloud environments.</p>
+                <p class="highlight">We believe our approach sets a new benchmark for distributed system optimization.</p>
+            </div>
+
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-value" id="stat-1">0%</div>
+                    <div class="stat-label">Latency Reduction</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="stat-2">0%</div>
+                    <div class="stat-label">Throughput Improvement</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="stat-3">0%</div>
+                    <div class="stat-label">Resource Utilization</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>ProblemSolver</h3>
+                    <p>We create innovative solutions to complex computational problems through cutting-edge algorithms and efficient system design.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#problem">Problem Statement</a></li>
+                        <li><a href="#solution">Our Solution</a></li>
+                        <li><a href="#visualization">Visualization</a></li>
+                        <li><a href="#conclusion">Conclusion</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-envelope"></i> contact@problemsolver.com</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Tech Innovation Center, Silicon Valley, CA</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 ProblemSolver. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Typing Effect
+        document.addEventListener('DOMContentLoaded', function() {
+            const typedTextSpan = document.getElementById('typed');
+            const textArray = ['Efficient Algorithms', 'Machine Learning', 'Optimization', 'Innovative Solutions'];
+            const typingDelay = 100;
+            const erasingDelay = 50;
+            const newTextDelay = 1500;
+            let textArrayIndex = 0;
+            let charIndex = 0;
+            
+            function type() {
+                if (charIndex < textArray[textArrayIndex].length) {
+                    typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+                    charIndex++;
+                    setTimeout(type, typingDelay);
+                } else {
+                    setTimeout(erase, newTextDelay);
+                }
+            }
+            
+            function erase() {
+                if (charIndex > 0) {
+                    typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex-1);
+                    charIndex--;
+                    setTimeout(erase, erasingDelay);
+                } else {
+                    textArrayIndex++;
+                    if (textArrayIndex >= textArray.length) textArrayIndex = 0;
+                    setTimeout(type, typingDelay + 500);
+                }
+            }
+            
+            setTimeout(type, 1000);
+            
+            // Scroll animations
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.2
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        
+                        // Animate bars if it's a graph container
+                        if (entry.target.classList.contains('graph-container')) {
+                            const bars = entry.target.querySelectorAll('.bar');
+                            bars.forEach(bar => {
+                                const targetHeight = bar.style.getPropertyValue('--target-height');
+                                bar.style.animation = `growBar 1.5s ease forwards`;
+                                bar.style.setProperty('--target-height', targetHeight);
+                            });
+                        }
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.problem-card').forEach(card => {
+                observer.observe(card);
+            });
+            
+            document.querySelectorAll('.step').forEach(step => {
+                observer.observe(step);
+            });
+            
+            document.querySelectorAll('.graph-container').forEach(graph => {
+                observer.observe(graph);
+            });
+            
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                const backToTop = document.querySelector('.back-to-top');
+                
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                    backToTop.classList.add('visible');
+                } else {
+                    header.classList.remove('scrolled');
+                    backToTop.classList.remove('visible');
+                }
+            });
+            
+            // Back to top button
+            document.querySelector('.back-to-top').addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Mobile menu toggle
+            document.querySelector('.hamburger').addEventListener('click', function() {
+                document.querySelector('.nav-links').classList.toggle('active');
+            });
+            
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', function() {
+                    document.querySelector('.nav-links').classList.remove('active');
+                });
+            });
+            
+            // Animate stats counters
+            const statObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounter('stat-1', 30, 2000);
+                        animateCounter('stat-2', 25, 2000);
+                        animateCounter('stat-3', 15, 2000);
+                        statObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            statObserver.observe(document.querySelector('.stats'));
+            
+            function animateCounter(elementId, target, duration) {
+                const element = document.getElementById(elementId);
+                const start = 0;
+                const increment = target / (duration / 20);
+                let current = start;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        clearInterval(timer);
+                        current = target;
+                    }
+                    element.textContent = Math.round(current) + '%';
+                }, 20);
+            }
+            
+            // Interactive demo sliders
+            const workloadSlider = document.getElementById('workload-slider');
+            const resourcesSlider = document.getElementById('resources-slider');
+            const workloadValue = document.getElementById('workload-value');
+            const resourcesValue = document.getElementById('resources-value');
+            
+            workloadSlider.addEventListener('input', updateDemo);
+            resourcesSlider.addEventListener('input', updateDemo);
+            
+            function updateDemo() {
+                // Update slider value labels
+                const workloadOptions = ['Low', 'Medium', 'High'];
+                const resourcesOptions = ['Limited', 'Medium', 'Adequate'];
+                
+                workloadValue.textContent = workloadOptions[workloadSlider.value - 1];
+                resourcesValue.textContent = resourcesOptions[resourcesSlider.value - 1];
+                
+                // Calculate performance based on sliders
+                const workloadFactor = workloadSlider.value / 2; // 0.5 to 1.5
+                const resourcesFactor = resourcesSlider.value / 2; // 0.5 to 1.5
+                
+                // Update bars in interactive demo
+                const bars = document.querySelectorAll('.interactive-demo .bar');
+                
+                // Existing A performance
+                let existingAPerf = 60 * (1 + (workloadFactor - 1) * 0.5) * (1 + (1 - resourcesFactor) * 0.3);
+                bars[0].style.setProperty('--target-height', existingAPerf + '%');
+                bars[0].querySelector('.bar-value').textContent = Math.round(1200 * (existingAPerf / 60)) + '';
+                
+                // Existing B performance
+                let existingBPerf = 65 * (1 + (workloadFactor - 1) * 0.4) * (1 + (1 - resourcesFactor) * 0.2);
+                bars[1].style.setProperty('--target-height', existingBPerf + '%');
+                bars[1].querySelector('.bar-value').textContent = Math.round(1300 * (existingBPerf / 65)) + '';
+                
+                // Our solution performance (less affected by constraints)
+                let ourSolutionPerf = 95 * (1 + (workloadFactor - 1) * 0.2) * (1 + (1 - resourcesFactor) * 0.1);
+                bars[2].style.setProperty('--target-height', ourSolutionPerf + '%');
+                bars[2].querySelector('.bar-value').textContent = Math.round(1900 * (ourSolutionPerf / 95)) + '';
+                
+                // Animate the bars
+                bars.forEach(bar => {
+                    bar.style.animation = 'none';
+                    setTimeout(() => {
+                        bar.style.animation = `growBar 1s ease forwards`;
+                    }, 10);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
