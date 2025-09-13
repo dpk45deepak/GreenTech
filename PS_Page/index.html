@@ -3,18 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Problem Statement | Interactive Explanation</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>KrishiBandhu | Agricultural Solutions</title>
+    <link rel="icon" type="image/png" href="https://static.vecteezy.com/system/resources/previews/059/958/688/non_2x/a-cartoon-man-in-a-turban-and-a-moustache-is-standing-in-the-middle-of-a-vector.jpg" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #6c63ff;
-            --secondary: #4a44c9;
-            --accent: #ff6584;
+            --primary: #2e7d32;
+            --primary-light: #4caf50;
+            --primary-dark: #1b5e20;
+            --secondary: #ffa000;
+            --secondary-light: #ffb74d;
+            --secondary-dark: #ff8f00;
+            --accent: #ff9800;
             --light: #f8f9fa;
-            --dark: #212529;
+            --dark: #263238;
+            --dark-green: #1b4332;
             --gray: #6c757d;
+            --light-green: #e8f5e9;
             --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
 
         * {
@@ -24,12 +33,17 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             line-height: 1.6;
             color: var(--dark);
             overflow-x: hidden;
             background-color: #f9f9f9;
             scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
         }
 
         a {
@@ -47,24 +61,26 @@
         /* Header & Navigation */
         header {
             background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
             backdrop-filter: blur(10px);
             transition: var(--transition);
+            padding: 0;
+            border-bottom: 2px solid var(--primary-light);
         }
 
         header.scrolled {
-            padding: 0.5rem 0;
+            padding: 0;
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.2rem 0;
+            padding: 1rem 0;
             transition: var(--transition);
         }
 
@@ -73,24 +89,39 @@
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary);
             display: flex;
             align-items: center;
+            gap: 0.5rem;
         }
 
-        .logo i {
-            margin-right: 0.5rem;
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 0.5px;
+        }
+
+        .logo-text span {
+            color: var(--secondary);
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-        }
-
-        .nav-links li {
-            margin-left: 2rem;
+            gap: 2rem;
         }
 
         .nav-links a {
@@ -98,21 +129,27 @@
             font-weight: 500;
             position: relative;
             padding: 0.5rem 0;
+            font-size: 1rem;
         }
 
         .nav-links a:after {
             content: '';
             position: absolute;
             width: 0;
-            height: 2px;
+            height: 3px;
             bottom: 0;
             left: 0;
             background-color: var(--primary);
             transition: var(--transition);
+            border-radius: 3px;
         }
 
         .nav-links a:hover:after {
             width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
         }
 
         .hamburger {
@@ -130,63 +167,70 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), url('https://www.agriculturelore.com/wp-content/uploads/2023/04/agriculture-003.jpg') no-repeat center center/cover;
             position: relative;
             overflow: hidden;
+            color: white;
+            text-align: center;
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
             max-width: 800px;
+            margin: 0 auto;
         }
 
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 1.5rem;
-            color: var(--dark);
+            color: white;
             line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .typed-text {
-            color: var(--primary);
-            font-weight: 600;
+            color: var(--secondary-light);
+            font-weight: 700;
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             margin-bottom: 2rem;
-            color: var(--gray);
+            color: rgba(255, 255, 255, 0.9);
         }
 
         .btn {
             display: inline-block;
-            padding: 0.8rem 2rem;
+            padding: 0.9rem 2.2rem;
             background-color: var(--primary);
             color: white;
             border-radius: 50px;
-            font-weight: 500;
+            font-weight: 600;
             transition: var(--transition);
             border: 2px solid var(--primary);
             cursor: pointer;
+            font-size: 1rem;
+            box-shadow: var(--shadow);
         }
 
         .btn:hover {
             background-color: transparent;
             color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.2);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
         }
 
         .btn-outline {
             background-color: transparent;
-            color: var(--primary);
+            color: white;
+            border-color: white;
             margin-left: 1rem;
         }
 
         .btn-outline:hover {
-            background-color: var(--primary);
-            color: white;
+            background-color: white;
+            color: var(--primary);
         }
 
         .hero-shape {
@@ -195,7 +239,7 @@
             bottom: -100px;
             width: 500px;
             height: 500px;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            background: linear-gradient(45deg, var(--primary), var(--primary-dark));
             border-radius: 50%;
             opacity: 0.2;
             z-index: 1;
@@ -208,7 +252,7 @@
             top: -50px;
             width: 300px;
             height: 300px;
-            background: linear-gradient(45deg, var(--accent), #ff8da1);
+            background: linear-gradient(45deg, var(--secondary), var(--secondary-dark));
             border-radius: 50%;
             opacity: 0.15;
             z-index: 1;
@@ -227,7 +271,7 @@
         }
 
         .section-title h2 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             color: var(--dark);
             margin-bottom: 1rem;
             position: relative;
@@ -237,36 +281,62 @@
         .section-title h2:after {
             content: '';
             position: absolute;
-            width: 70px;
-            height: 4px;
+            width: 80px;
+            height: 5px;
             background-color: var(--primary);
-            bottom: -10px;
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
-            border-radius: 2px;
+            border-radius: 3px;
         }
 
         .section-title p {
             color: var(--gray);
             max-width: 700px;
-            margin: 0 auto;
+            margin: 1.5rem auto 0;
+            font-size: 1.1rem;
         }
 
         /* Problem Section */
+        .problem {
+            background-color: var(--light-green);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .problem::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/rice-paper.png');
+            opacity: 0.1;
+        }
+
+        .problem .container {
+            position: relative;
+            z-index: 1;
+        }
+
         .problem-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         .problem-card {
             background: white;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            box-shadow: var(--shadow);
             transition: var(--transition);
             transform: translateY(50px);
             opacity: 0;
+            border-top: 5px solid var(--primary);
+            position: relative;
+            z-index: 1;
         }
 
         .problem-card.visible {
@@ -276,45 +346,88 @@
 
         .problem-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+            box-shadow: var(--shadow-hover);
         }
 
         .card-header {
-            padding: 1.5rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 1.8rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/asfalt-light.png');
+            opacity: 0.1;
         }
 
         .card-header h3 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .card-header p {
+            opacity: 0.9;
+            font-size: 0.95rem;
         }
 
         .card-body {
-            padding: 1.5rem;
+            padding: 2rem;
+        }
+
+        .card-body p {
+            margin-bottom: 1.2rem;
+            color: var(--dark);
         }
 
         .card-body ul {
             list-style: none;
-            margin-top: 1rem;
+            margin-top: 1.2rem;
         }
 
         .card-body ul li {
-            margin-bottom: 0.8rem;
-            padding-left: 1.5rem;
+            margin-bottom: 0.9rem;
+            padding-left: 2rem;
             position: relative;
+            color: var(--dark);
         }
 
         .card-body ul li:before {
-            content: '→';
+            content: '🌱';
             color: var(--primary);
             position: absolute;
             left: 0;
+            font-size: 1.2rem;
         }
 
         /* Solution Section */
         .solution {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), url('https://www.transparenttextures.com/patterns/soft-wallpaper.png');
+            position: relative;
+        }
+
+        .solution::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/rice-paper.png');
+            opacity: 0.05;
+        }
+
+        .solution .container {
+            position: relative;
+            z-index: 1;
         }
 
         .solution-steps {
@@ -327,15 +440,21 @@
             background: white;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            box-shadow: var(--shadow);
             transform: translateX(-50px);
             opacity: 0;
             transition: transform 0.6s ease, opacity 0.6s ease;
+            border-left: 5px solid var(--primary);
         }
 
         .step.visible {
             transform: translateX(0);
             opacity: 1;
+        }
+
+        .step:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow-hover);
         }
 
         .step-icon {
@@ -345,7 +464,7 @@
             justify-content: center;
             background: var(--primary);
             color: white;
-            font-size: 2rem;
+            font-size: 2.2rem;
             position: relative;
         }
 
@@ -357,35 +476,79 @@
             right: -15px;
             width: 40px;
             height: 40px;
-            background: var(--accent);
+            background: var(--secondary);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
             font-size: 1.2rem;
-            box-shadow: 0 5px 15px rgba(255, 101, 132, 0.3);
+            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.3);
         }
 
         .step-content {
-            padding: 2rem;
+            padding: 2.2rem;
             flex: 1;
+        }
+
+        .step-content h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+
+        .step-content p {
+            color: var(--dark);
+            line-height: 1.7;
+        }
+
+        .step-content ol {
+            margin-top: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        .step-content ol li {
+            margin-bottom: 1rem;
+            padding-left: 0.5rem;
+        }
+
+        .step-content ol li strong {
+            color: var(--primary-dark);
         }
 
         /* Visualization Section */
         .visualization {
             text-align: center;
+            background: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), url('https://images.unsplash.com/photo-1625246335525-8b71ebc6f79f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') no-repeat center center/cover;
+            position: relative;
+        }
+
+        .visualization::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/rice-paper.png');
+            opacity: 0.05;
+        }
+
+        .visualization .container {
+            position: relative;
+            z-index: 1;
         }
 
         .graph-container {
             background: white;
             border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
             margin-bottom: 3rem;
             transform: scale(0.9);
             opacity: 0;
             transition: var(--transition);
+            border: 1px solid rgba(76, 175, 80, 0.2);
         }
 
         .graph-container.visible {
@@ -398,104 +561,134 @@
             display: flex;
             align-items: flex-end;
             justify-content: center;
-            gap: 30px;
+            gap: 40px;
             padding: 0 2rem;
-            margin-top: 2rem;
+            margin-top: 2.5rem;
         }
 
         .bar {
-            width: 60px;
-            background: linear-gradient(to top, var(--primary), var(--secondary));
-            border-radius: 5px 5px 0 0;
+            width: 70px;
+            background: linear-gradient(to top, var(--primary), var(--primary-dark));
+            border-radius: 8px 8px 0 0;
             position: relative;
             transition: var(--transition);
             transform-origin: bottom;
             height: 0;
+            box-shadow: 0 3px 10px rgba(46, 125, 50, 0.2);
         }
 
         .bar:hover {
-            transform: scaleY(1.05);
-            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.4);
+            transform: scaleY(1.08);
+            box-shadow: 0 5px 15px rgba(46, 125, 50, 0.4);
         }
 
         .bar-label {
             position: absolute;
-            bottom: -30px;
+            bottom: -35px;
             left: 0;
             width: 100%;
             text-align: center;
-            font-weight: 500;
+            font-weight: 600;
+            color: var(--dark);
         }
 
         .bar-value {
             position: absolute;
-            top: -30px;
+            top: -35px;
             left: 0;
             width: 100%;
             text-align: center;
             font-weight: bold;
             color: var(--primary);
+            font-size: 1.1rem;
         }
 
         /* Interactive Demo */
         .interactive-demo {
             background: white;
             border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
             margin-top: 3rem;
+            border: 1px solid rgba(76, 175, 80, 0.2);
         }
 
         .demo-controls {
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: 1.5rem;
             justify-content: center;
-            margin: 2rem 0;
+            margin: 2.5rem 0;
         }
 
         .slider-container {
             flex: 1;
             min-width: 250px;
             max-width: 400px;
+            background: var(--light-green);
+            padding: 1.5rem;
+            border-radius: 10px;
         }
 
         .slider-label {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            color: var(--primary-dark);
         }
 
         .slider {
             width: 100%;
-            height: 10px;
+            height: 12px;
             -webkit-appearance: none;
             appearance: none;
             background: #ddd;
             outline: none;
-            border-radius: 5px;
+            border-radius: 10px;
+            overflow: hidden;
         }
 
         .slider::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 20px;
-            height: 20px;
+            width: 25px;
+            height: 25px;
             border-radius: 50%;
             background: var(--primary);
             cursor: pointer;
             transition: var(--transition);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            border: 3px solid white;
         }
 
         .slider::-webkit-slider-thumb:hover {
             transform: scale(1.2);
+            background: var(--primary-dark);
         }
 
         /* Conclusion Section */
         .conclusion {
             text-align: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(rgba(46, 125, 50, 0.85), rgba(27, 94, 32, 0.9)), url('https://images.unsplash.com/photo-1625246335525-8b71ebc6f79f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') no-repeat center center/cover;
             color: white;
+            position: relative;
+        }
+
+        .conclusion::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/rice-paper.png');
+            opacity: 0.1;
+        }
+
+        .conclusion .container {
+            position: relative;
+            z-index: 1;
         }
 
         .conclusion .section-title h2 {
@@ -503,7 +696,7 @@
         }
 
         .conclusion .section-title h2:after {
-            background-color: white;
+            background-color: var(--secondary-light);
         }
 
         .conclusion .section-title p {
@@ -511,76 +704,115 @@
         }
 
         .conclusion-content {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .conclusion-content p {
+            margin-bottom: 1.5rem;
         }
 
         .highlight {
-            color: #ffd166;
+            color: var(--secondary-light);
             font-weight: 600;
+            font-style: italic;
         }
 
         .stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
         }
 
         .stat-item {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
-            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 2rem;
+            border-radius: 15px;
             backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
         }
 
         .stat-value {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
+            color: var(--secondary-light);
         }
 
         .stat-label {
-            font-size: 1rem;
+            font-size: 1.1rem;
             opacity: 0.9;
         }
 
         /* Footer */
         footer {
-            background: var(--dark);
+            background: linear-gradient(rgba(27, 67, 50, 0.95), rgba(27, 67, 50, 0.95)), url('https://images.unsplash.com/photo-1625246335525-8b71ebc6f79f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') no-repeat center center/cover;
             color: white;
-            padding: 4rem 0 2rem;
+            padding: 5rem 0 2.5rem;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/rice-paper.png');
+            opacity: 0.05;
+        }
+
+        footer .container {
+            position: relative;
+            z-index: 1;
         }
 
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
+            gap: 3.5rem;
+            margin-bottom: 3.5rem;
         }
 
         .footer-column h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            margin-bottom: 1.8rem;
             position: relative;
-            padding-bottom: 0.5rem;
+            padding-bottom: 0.8rem;
+            color: var(--secondary-light);
         }
 
         .footer-column h3:after {
             content: '';
             position: absolute;
-            width: 40px;
+            width: 50px;
             height: 3px;
-            background-color: var(--primary);
+            background-color: var(--secondary-light);
             bottom: 0;
             left: 0;
             border-radius: 3px;
         }
 
         .footer-column p {
-            margin-bottom: 1rem;
-            opacity: 0.8;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+            line-height: 1.7;
         }
 
         .footer-column ul {
@@ -588,47 +820,68 @@
         }
 
         .footer-column ul li {
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
         }
 
         .footer-column ul li a {
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.9);
             transition: var(--transition);
+            display: block;
+            padding: 0.3rem 0;
         }
 
         .footer-column ul li a:hover {
-            color: var(--primary);
-            padding-left: 5px;
+            color: var(--secondary-light);
+            padding-left: 8px;
+        }
+
+        .contact-info {
+            list-style: none;
+        }
+
+        .contact-info li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .contact-info i {
+            color: var(--secondary-light);
+            font-size: 1.2rem;
+            width: 25px;
         }
 
         .social-icons {
             display: flex;
             gap: 1rem;
-            margin-top: 1.5rem;
+            margin-top: 1.8rem;
         }
 
         .social-icons a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             color: white;
             transition: var(--transition);
+            font-size: 1.2rem;
         }
 
         .social-icons a:hover {
-            background: var(--primary);
+            background: var(--secondary);
             transform: translateY(-5px);
         }
 
         .copyright {
             text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            opacity: 0.7;
+            padding-top: 2.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            opacity: 0.8;
+            font-size: 0.95rem;
         }
 
         /* Back to top button */
@@ -636,8 +889,8 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
-            width: 50px;
-            height: 50px;
+            width: 55px;
+            height: 55px;
             background: var(--primary);
             color: white;
             border-radius: 50%;
@@ -649,7 +902,8 @@
             opacity: 0;
             visibility: hidden;
             z-index: 999;
-            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+            box-shadow: var(--shadow);
+            font-size: 1.2rem;
         }
 
         .back-to-top.visible {
@@ -658,7 +912,7 @@
         }
 
         .back-to-top:hover {
-            background: var(--secondary);
+            background: var(--primary-dark);
             transform: translateY(-5px);
         }
 
@@ -691,6 +945,10 @@
             .step-icon {
                 padding: 1.5rem;
             }
+
+            .section-title h2 {
+                font-size: 2.4rem;
+            }
         }
 
         @media (max-width: 768px) {
@@ -718,28 +976,37 @@
             }
             
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 2.4rem;
             }
             
             .hero p {
-                font-size: 1rem;
+                font-size: 1.1rem;
             }
             
             .btn {
-                padding: 0.6rem 1.5rem;
-                font-size: 0.9rem;
+                padding: 0.8rem 1.8rem;
+                font-size: 0.95rem;
             }
             
             .section-title h2 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             
             .graph {
-                gap: 15px;
+                gap: 20px;
             }
             
             .bar {
-                width: 40px;
+                width: 50px;
+            }
+
+            .problem, .solution, .visualization, .conclusion, footer {
+                background-attachment: scroll !important;
+            }
+
+            .conclusion-content {
+                padding: 1.8rem;
+                font-size: 1.05rem;
             }
         }
 
@@ -747,6 +1014,10 @@
             .hero {
                 text-align: center;
                 padding: 7rem 0 3rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
             }
             
             .hero-buttons {
@@ -764,16 +1035,25 @@
             }
             
             .graph {
-                gap: 10px;
+                gap: 15px;
                 padding: 0 1rem;
             }
             
             .bar {
-                width: 30px;
+                width: 40px;
             }
             
             .stats {
                 grid-template-columns: 1fr;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
             }
         }
     </style>
@@ -784,8 +1064,10 @@
         <div class="container">
             <nav>
                 <a href="#" class="logo">
-                    <i class="fas fa-code"></i>
-                    ProblemSolver
+                    <div class="logo-img">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="logo-text">Krshi<span>Bandhu</span></div>
                 </a>
                 <ul class="nav-links">
                     <li><a href="#problem">Problem</a></li>
@@ -804,11 +1086,11 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Solving Complex Problems with <span class="typed-text" id="typed"></span></h1>
-                <p>An interactive explanation of our approach to solving challenging computational problems with innovative algorithms and efficient data structures.</p>
+                <h1>Transforming Agriculture with <span class="typed-text" id="typed"></span></h1>
+                <p>Empowering Indian farmers through technology, transparency, and innovation for a sustainable agricultural future.</p>
                 <div class="hero-buttons">
-                    <a href="#problem" class="btn">Explore Problem</a>
-                    <a href="#solution" class="btn btn-outline">View Solution</a>
+                    <a href="#problem" class="btn">Explore Challenges</a>
+                    <a href="#solution" class="btn btn-outline">Discover Solutions</a>
                 </div>
             </div>
         </div>
@@ -820,22 +1102,22 @@
     <section id="problem" class="problem">
         <div class="container">
             <div class="section-title">
-                <h2>Problem Statement</h2>
-                <p>Understanding the core challenges we need to address</p>
+                <h2>Agricultural Challenges</h2>
+                <p>Understanding the core issues facing Indian farmers today</p>
             </div>
             <div class="problem-cards">
                 <div class="problem-card">
                     <div class="card-header">
                         <h3>Problem Overview</h3>
-                        <p>Main challenges</p>
+                        <p>Key challenges in Indian agriculture</p>
                     </div>
                     <div class="card-body">
-                        <p>Design an efficient algorithm to optimize resource allocation in distributed systems with constraints on latency and throughput.</p>
+                        <p>The agricultural sector faces significant hurdles including lack of transparency, inadequate access to resources, and limited digital infrastructure.</p>
                         <ul>
-                            <li>Minimize response time</li>
-                            <li>Maximize resource utilization</li>
-                            <li>Handle dynamic workload changes</li>
-                            <li>Ensure fault tolerance</li>
+                            <li>Complex supply chains with multiple intermediaries</li>
+                            <li>Limited access to modern farming techniques</li>
+                            <li>Inadequate market information and price transparency</li>
+                            <li>Limited digital literacy and technology adoption</li>
                         </ul>
                     </div>
                 </div>
@@ -845,13 +1127,13 @@
                         <p>Limitations & boundaries</p>
                     </div>
                     <div class="card-body">
-                        <p>The solution must operate within the following constraints:</p>
+                        <p>Our solution must operate within these practical constraints:</p>
                         <ul>
-                            <li>Limited computational resources</li>
-                            <li>Real-time processing requirements</li>
-                            <li>Network bandwidth limitations</li>
-                            <li>Security and privacy considerations</li>
-                            <li>Scalability to handle increasing loads</li>
+                            <li>Varied digital literacy among farmers</li>
+                            <li>Limited network connectivity in rural areas</li>
+                            <li>Diverse regional languages and cultural practices</li>
+                            <li>Infrastructure challenges in remote areas</li>
+                            <li>Economic constraints of small-scale farmers</li>
                         </ul>
                     </div>
                 </div>
@@ -861,13 +1143,13 @@
                         <p>Success metrics</p>
                     </div>
                     <div class="card-body">
-                        <p>The solution should demonstrate measurable improvements in:</p>
+                        <p>KrishiBandhu aims to deliver measurable improvements in:</p>
                         <ul>
-                            <li>30% reduction in latency</li>
-                            <li>25% improvement in throughput</li>
-                            <li>15% better resource utilization</li>
-                            <li>99.9% system availability</li>
-                            <li>Linear scaling with added resources</li>
+                            <li>Increased transparency in agricultural produce sales</li>
+                            <li>Digital identity creation for farmers and retailers</li>
+                            <li>Improved usability through voice assistant integration</li>
+                            <li>Reduced dependency on middlemen</li>
+                            <li>Better market access for producers</li>
                         </ul>
                     </div>
                 </div>
@@ -880,7 +1162,7 @@
         <div class="container">
             <div class="section-title">
                 <h2>Our Solution</h2>
-                <p>Innovative approach to solving the problem</p>
+                <p>Comprehensive approach to transform Indian agriculture</p>
             </div>
             <div class="solution-steps">
                 <div class="step">
@@ -889,7 +1171,7 @@
                     </div>
                     <div class="step-content">
                         <h3>Problem Analysis</h3>
-                        <p>We conducted a thorough analysis of the problem space, identifying key bottlenecks and performance constraints. Our team examined existing solutions and their limitations to inform our approach.</p>
+                        <p>Indian agriculture has long suffered from inefficient resource utilization, outdated practices, data gaps, and exploitation by middlemen leading to price manipulation and reduced farmer income.</p>
                     </div>
                 </div>
                 <div class="step">
@@ -897,8 +1179,8 @@
                         <i class="fas fa-brain"></i>
                     </div>
                     <div class="step-content">
-                        <h3>Algorithm Design</h3>
-                        <p>We developed a novel hybrid algorithm that combines machine learning prediction with heuristic optimization techniques. This approach allows for adaptive resource allocation based on predicted workload patterns.</p>
+                        <h3>Solution Design</h3>
+                        <p>We've designed an integrated platform that combines digital marketplace capabilities with AI-powered insights and voice-assisted technology to overcome literacy and accessibility barriers.</p>
                     </div>
                 </div>
                 <div class="step">
@@ -907,7 +1189,33 @@
                     </div>
                     <div class="step-content">
                         <h3>Implementation</h3>
-                        <p>We implemented the solution using a microservices architecture with containerization for scalability and ease of deployment. The system is built with fault tolerance and self-healing capabilities.</p>
+                        <p>KrishiBandhu is implemented as an intuitive web application with six core components:</p>
+                        <ol>
+                            <li id="digital-market">
+                              <strong>Digital Marketplace</strong>
+                              <p>A transparent platform for direct trade between farmers and buyers</p>
+                            </li>
+                            <li id="crop-recommendation">
+                              <strong>ML-based Crop Recommendations</strong>
+                              <p>Intelligent system suggesting optimal crops based on soil, climate and market demand</p>
+                            </li>
+                            <li id="voice-assistant">
+                              <strong>Multilingual Voice Assistant</strong>
+                              <p>Voice-controlled support in regional languages for easy access</p>
+                            </li>
+                            <li id="personal-dashboard">
+                              <strong>Personalized Dashboard</strong>
+                              <p>Customized interface showing orders, analytics and recommendations</p>
+                            </li>
+                            <li id="weather-prediction">
+                              <strong>Weather Prediction & Insurance</strong>
+                              <p>Forecasts and risk management tools for crop protection</p>
+                            </li>
+                            <li id="cold-storage-info">
+                              <strong>Cold Storage Locator</strong>
+                              <p>Information on nearby storage facilities to reduce post-harvest losses</p>
+                            </li>
+                          </ol>
                     </div>
                 </div>
                 <div class="step">
@@ -915,125 +1223,52 @@
                         <i class="fas fa-chart-line"></i>
                     </div>
                     <div class="step-content">
-                        <h3>Optimization</h3>
-                        <p>Through iterative testing and profiling, we optimized the algorithm parameters and system configuration to achieve the best performance across various workload scenarios.</p>
+                        <h3>Impact & Optimization</h3>
+                        <p>KrishiBandhu optimizes Indian agriculture by offering a comprehensive digital ecosystem that enhances accessibility, reduces risks, prevents losses, and maximizes farmer income through user-friendly interaction compared to traditional approaches.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Visualization Section -->
-    <section id="visualization" class="visualization">
-        <div class="container">
-            <div class="section-title">
-                <h2>Performance Visualization</h2>
-                <p>Comparative analysis of our solution against existing approaches</p>
-            </div>
-            <div class="graph-container">
-                <h3>Latency Comparison (Lower is Better)</h3>
-                <div class="graph">
-                    <div class="bar" style="--target-height: 80%;" data-value="120ms">
-                        <span class="bar-value">120ms</span>
-                        <span class="bar-label">Existing A</span>
-                    </div>
-                    <div class="bar" style="--target-height: 70%;" data-value="105ms">
-                        <span class="bar-value">105ms</span>
-                        <span class="bar-label">Existing B</span>
-                    </div>
-                    <div class="bar" style="--target-height: 45%;" data-value="68ms">
-                        <span class="bar-value">68ms</span>
-                        <span class="bar-label">Our Solution</span>
-                    </div>
-                </div>
-            </div>
-            <div class="graph-container">
-                <h3>Throughput Comparison (Higher is Better)</h3>
-                <div class="graph">
-                    <div class="bar" style="--target-height: 60%;" data-value="1.2K">
-                        <span class="bar-value">1.2K</span>
-                        <span class="bar-label">Existing A</span>
-                    </div>
-                    <div class="bar" style="--target-height: 65%;" data-value="1.3K">
-                        <span class="bar-value">1.3K</span>
-                        <span class="bar-label">Existing B</span>
-                    </div>
-                    <div class="bar" style="--target-height: 95%;" data-value="1.9K">
-                        <span class="bar-value">1.9K</span>
-                        <span class="bar-label">Our Solution</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Interactive Demo -->
-            <div class="interactive-demo">
-                <h3>Interactive Performance Simulator</h3>
-                <p>Adjust the parameters to see how our solution performs under different conditions</p>
-                
-                <div class="demo-controls">
-                    <div class="slider-container">
-                        <div class="slider-label">
-                            <span>Workload Intensity</span>
-                            <span id="workload-value">Medium</span>
-                        </div>
-                        <input type="range" min="1" max="3" value="2" class="slider" id="workload-slider">
-                    </div>
-                    
-                    <div class="slider-container">
-                        <div class="slider-label">
-                            <span>System Resources</span>
-                            <span id="resources-value">Medium</span>
-                        </div>
-                        <input type="range" min="1" max="3" value="2" class="slider" id="resources-slider">
-                    </div>
-                </div>
-                
-                <div class="graph">
-                    <div class="bar" style="--target-height: 60%;" data-value="1.2K">
-                        <span class="bar-value">1.2K</span>
-                        <span class="bar-label">Existing A</span>
-                    </div>
-                    <div class="bar" style="--target-height: 65%;" data-value="1.3K">
-                        <span class="bar-value">1.3K</span>
-                        <span class="bar-label">Existing B</span>
-                    </div>
-                    <div class="bar" style="--target-height: 95%;" data-value="1.9K">
-                        <span class="bar-value">1.9K</span>
-                        <span class="bar-label">Our Solution</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    
 
     <!-- Conclusion Section -->
     <section id="conclusion" class="conclusion">
         <div class="container">
             <div class="section-title">
                 <h2>Conclusion</h2>
-                <p>Summary of our achievements and future directions</p>
+                <p>The future of Indian agriculture with KrishiBandhu</p>
             </div>
             <div class="conclusion-content">
-                <p>Our solution successfully addresses the problem of resource allocation in distributed systems, demonstrating significant improvements in both latency and throughput compared to existing approaches.</p>
-                <p>The algorithm's adaptive nature allows it to handle dynamic workloads effectively while maintaining high resource utilization and system stability.</p>
-                <p>Future work will focus on enhancing the predictive capabilities of our machine learning model and expanding the solution to support multi-cloud environments.</p>
-                <p class="highlight">We believe our approach sets a new benchmark for distributed system optimization.</p>
+                <p>
+                    KrishiBandhu represents a transformative approach to addressing long-standing challenges in Indian agriculture. By combining technology with deep understanding of farmer needs, we've created a platform that minimizes complexity while maximizing impact.
+                </p>
+                <p>
+                    Our digital marketplace eliminates middlemen, ensuring farmers receive fair prices for their produce. The ML-based recommendation system empowers informed decision-making, while the voice assistant breaks down literacy barriers. With integrated weather predictions and cold storage information, we're addressing both pre-harvest and post-harvest challenges.
+                </p>
+                <p>
+                    The personalized dashboard provides each user with relevant insights, creating a customized experience that traditional solutions cannot match. Most importantly, every component is designed with the Indian farmer in mind - intuitive, accessible, and practical for real-world conditions.
+                </p>
+                <p class="highlight">
+                    While the challenges are significant, KrishiBandhu demonstrates that with appropriate technology and thoughtful design, we can create meaningful change in Indian agriculture. With support from stakeholders across the ecosystem, this vision is not just possible but achievable in the near future.
+                </p>
             </div>
 
-            <div class="stats">
+            <!-- <div class="stats">
                 <div class="stat-item">
-                    <div class="stat-value" id="stat-1">0%</div>
-                    <div class="stat-label">Latency Reduction</div>
+                    <div class="stat-value" id="stat-1">30%</div>
+                    <div class="stat-label">Expected Increase in Farmer Income</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-value" id="stat-2">0%</div>
-                    <div class="stat-label">Throughput Improvement</div>
+                    <div class="stat-value" id="stat-2">25%</div>
+                    <div class="stat-label">Reduction in Post-Harvest Losses</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-value" id="stat-3">0%</div>
-                    <div class="stat-label">Resource Utilization</div>
+                    <div class="stat-value" id="stat-3">15%</div>
+                    <div class="stat-label">Improvement in Resource Efficiency</div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </section>
 
@@ -1042,33 +1277,40 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3>ProblemSolver</h3>
-                    <p>We create innovative solutions to complex computational problems through cutting-edge algorithms and efficient system design.</p>
+                    <h3>KrishiBandhu</h3>
+                    <p>
+                        Transforming Indian agriculture through technology, transparency, and innovation. Empowering farmers for a sustainable future.
+                    </p>
                     <div class="social-icons">
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="https://github.com/deep-45deepak/GreenTech" target="_blank">
+                            <i class="fab fa-github"></i>
+                          </a>
+                          <a href="https://www.youtube.com/KrishiBandhu target="_blank">
+                            <i class="fab fa-youtube"></i>
+                          </a>
+                          
                     </div>
                 </div>
                 <div class="footer-column">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="#problem">Problem Statement</a></li>
+                        <li><a href="#problem">Challenges</a></li>
                         <li><a href="#solution">Our Solution</a></li>
-                        <li><a href="#visualization">Visualization</a></li>
-                        <li><a href="#conclusion">Conclusion</a></li>
+                        <li><a href="#visualization">Impact</a></li>
+                        <li><a href="#conclusion">Future Vision</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Contact Us</h3>
-                    <p><i class="fas fa-envelope"></i> contact@problemsolver.com</p>
-                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Tech Innovation Center, Silicon Valley, CA</p>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-envelope"></i>  abhinavkumar59304@gmail.com</li>
+                        <li><i class="fas fa-phone"></i> +91 9643359747</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Satyug Darshan Institute of Engineering and Technology, Faridabad</li>
+                    </ul>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 ProblemSolver. All rights reserved.</p>
+                <p>&copy; 2025 KrishiBandhu. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -1082,7 +1324,7 @@
         // Typing Effect
         document.addEventListener('DOMContentLoaded', function() {
             const typedTextSpan = document.getElementById('typed');
-            const textArray = ['Efficient Algorithms', 'Machine Learning', 'Optimization', 'Innovative Solutions'];
+            const textArray = ['Technology', 'Transparency', 'Innovation', 'Empowerment'];
             const typingDelay = 100;
             const erasingDelay = 50;
             const newTextDelay = 1500;
@@ -1215,43 +1457,43 @@
             }
             
             // Interactive demo sliders
-            const workloadSlider = document.getElementById('workload-slider');
-            const resourcesSlider = document.getElementById('resources-slider');
-            const workloadValue = document.getElementById('workload-value');
-            const resourcesValue = document.getElementById('resources-value');
+            const literacySlider = document.getElementById('literacy-slider');
+            const connectivitySlider = document.getElementById('connectivity-slider');
+            const literacyValue = document.getElementById('literacy-value');
+            const connectivityValue = document.getElementById('connectivity-value');
             
-            workloadSlider.addEventListener('input', updateDemo);
-            resourcesSlider.addEventListener('input', updateDemo);
+            literacySlider.addEventListener('input', updateDemo);
+            connectivitySlider.addEventListener('input', updateDemo);
             
             function updateDemo() {
                 // Update slider value labels
-                const workloadOptions = ['Low', 'Medium', 'High'];
-                const resourcesOptions = ['Limited', 'Medium', 'Adequate'];
+                const literacyOptions = ['Low', 'Medium', 'High'];
+                const connectivityOptions = ['Poor', 'Medium', 'Good'];
                 
-                workloadValue.textContent = workloadOptions[workloadSlider.value - 1];
-                resourcesValue.textContent = resourcesOptions[resourcesSlider.value - 1];
+                literacyValue.textContent = literacyOptions[literacySlider.value - 1];
+                connectivityValue.textContent = connectivityOptions[connectivitySlider.value - 1];
                 
                 // Calculate performance based on sliders
-                const workloadFactor = workloadSlider.value / 2; // 0.5 to 1.5
-                const resourcesFactor = resourcesSlider.value / 2; // 0.5 to 1.5
+                const literacyFactor = literacySlider.value / 2; // 0.5 to 1.5
+                const connectivityFactor = connectivitySlider.value / 2; // 0.5 to 1.5
                 
                 // Update bars in interactive demo
                 const bars = document.querySelectorAll('.interactive-demo .bar');
                 
-                // Existing A performance
-                let existingAPerf = 60 * (1 + (workloadFactor - 1) * 0.5) * (1 + (1 - resourcesFactor) * 0.3);
-                bars[0].style.setProperty('--target-height', existingAPerf + '%');
-                bars[0].querySelector('.bar-value').textContent = Math.round(1200 * (existingAPerf / 60)) + '';
+                // Traditional approach performance
+                let traditionalPerf = 50 * (1 + (literacyFactor - 1) * 0.3) * (1 + (connectivityFactor - 1) * 0.2);
+                bars[0].style.setProperty('--target-height', traditionalPerf + '%');
+                bars[0].querySelector('.bar-value').textContent = Math.round(traditionalPerf) + '%';
                 
-                // Existing B performance
-                let existingBPerf = 65 * (1 + (workloadFactor - 1) * 0.4) * (1 + (1 - resourcesFactor) * 0.2);
-                bars[1].style.setProperty('--target-height', existingBPerf + '%');
-                bars[1].querySelector('.bar-value').textContent = Math.round(1300 * (existingBPerf / 65)) + '';
+                // Other solutions performance
+                let otherSolutionsPerf = 65 * (1 + (literacyFactor - 1) * 0.5) * (1 + (connectivityFactor - 1) * 0.4);
+                bars[1].style.setProperty('--target-height', otherSolutionsPerf + '%');
+                bars[1].querySelector('.bar-value').textContent = Math.round(otherSolutionsPerf) + '%';
                 
                 // Our solution performance (less affected by constraints)
-                let ourSolutionPerf = 95 * (1 + (workloadFactor - 1) * 0.2) * (1 + (1 - resourcesFactor) * 0.1);
+                let ourSolutionPerf = 90 * (1 + (literacyFactor - 1) * 0.7) * (1 + (connectivityFactor - 1) * 0.6);
                 bars[2].style.setProperty('--target-height', ourSolutionPerf + '%');
-                bars[2].querySelector('.bar-value').textContent = Math.round(1900 * (ourSolutionPerf / 95)) + '';
+                bars[2].querySelector('.bar-value').textContent = Math.round(ourSolutionPerf) + '%';
                 
                 // Animate the bars
                 bars.forEach(bar => {
@@ -1261,6 +1503,9 @@
                     }, 10);
                 });
             }
+            
+            // Initialize demo
+            updateDemo();
         });
     </script>
 </body>
