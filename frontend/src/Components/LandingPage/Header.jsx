@@ -16,16 +16,17 @@ const Header = () => {
   return (
     <>
       {/* Top Header */}
-      <div className="flex items-center justify-center p-4 w-full">
-        <header className="w-full max-w-6xl bg-white backdrop-blur-lg shadow-md z-50 rounded-full">
-          <div className="mx-auto flex items-center justify-between px-6 py-3">
+      <div className="flex items-center justify-center pt-2 w-full">
+        <header className="w-[95%] sm:w-[90%] md:max-w-6xl bg-white backdrop-blur-lg shadow-md z-50 rounded-xl sm:rounded-full">
+          <div className="mx-auto flex items-center justify-between px-3 sm:px-6 py-2 sm:py-3">
             {/* Logo */}
             <div
-              className="flex items-center space-x-2 cursor-pointer"
+              className="flex items-center space-x-3 cursor-pointer"
               onClick={() => navigate("/")}
             >
-              <span className="text-xl font-bold text-green-700">
-                KRISHIBANDHU🍃
+              <span className="text-lg sm:text-xl font-bold text-green-700">
+              <span className="text-lg sm:text-xl font-bold text-green-700"> </span>
+                KRISHIBANDHU 🍃
               </span>
             </div>
 
@@ -43,7 +44,7 @@ const Header = () => {
             </nav>
 
             {/* Right Side */}
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-3 sm:space-x-4">
               <button className="p-2 rounded-full hover:bg-gray-100 transition">
                 <Calendar className="w-5 h-5 text-gray-600" />
               </button>
@@ -75,8 +76,8 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-white rounded-xl shadow-md z-50 mt-2 mx-4">
-          <nav className="flex flex-col space-y-3 px-6 py-4">
+        <div className="md:hidden bg-white rounded-xl shadow-md z-50 mt-2 mx-2">
+          <nav className="flex flex-col space-y-3 px-5 py-4">
             {navItems.map((item, i) => (
               <button
                 key={i}
