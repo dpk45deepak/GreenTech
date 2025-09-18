@@ -7,7 +7,7 @@ const WeatherGrowthCard = () => {
         {/* Location Header */}
         <div className="mb-6">
           <p className="text-gray-200 text-sm font-medium tracking-wide">
-            🌍 Jakarta, Green GC 98765, Indonesia
+            🌍 Palampur, Haryana, India
           </p>
         </div>
 
@@ -18,7 +18,7 @@ const WeatherGrowthCard = () => {
               <div className="flex items-center">
                 <span className="text-red-500 mr-2 text-lg"></span>
                 <h2 className="text-lg font-semibold text-white drop-shadow-sm">
-                  Jakarta, Indonesia
+                  Palampur, India
                 </h2>
               </div>
             </div>

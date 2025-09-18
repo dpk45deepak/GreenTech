@@ -6,6 +6,7 @@ import CropRecommendation from "./Modules/recommendation/pages/Recommedation.jsx
 import ProfilePage from "./Modules/auth/pages/Profile.jsx";
 import SignIn from "./Modules/auth/pages/SignIn.jsx";
 import Signup from "./Modules/auth/pages/Signup.jsx";
+import Assistant from "./Modules/VoiceAssistant/Pages/Assistant.jsx";
 import "./App.css";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/assistant" element={<Assistant />} />
 
         {/* Example: Add more pages like About, Contact, etc. */}
         {/* <Route path="/about" element={<AboutPage />} /> */}

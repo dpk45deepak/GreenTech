@@ -16,7 +16,7 @@ const HeroSection = () => {
       {/* Overlay for better text readability */}
       <div className="absolute inset-0 bg-black bg-opacity-30"></div>
       
-      <div className="relative z-10">
+      <div className="relative z-10 pt-2">
         <Header />
         
         <div className="w-full flex flex-col lg:flex-row items-center px-4 md:px-24 gap-28 lg:gap-24 md:pt-20">

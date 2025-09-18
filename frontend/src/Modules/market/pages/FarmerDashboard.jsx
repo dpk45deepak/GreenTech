@@ -259,7 +259,7 @@ const FarmerDashboard = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-green-700 to-green-900 text-white py-16 lg:py-20">
+      <section className="relative bg-gradient-to-r from-green-700 to-teal-800 text-white py-16 lg:py-20">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')] bg-cover bg-center opacity-10"></div>
         </div>
